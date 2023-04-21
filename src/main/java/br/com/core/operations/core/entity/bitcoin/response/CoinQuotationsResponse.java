@@ -1,4 +1,4 @@
-package br.com.core.operations.core.entity.coinbase.response;
+package br.com.core.operations.core.entity.bitcoin.response;
 
 import br.com.core.operations.core.entity.Quotation;
 import com.fasterxml.jackson.annotation.JsonProperty;

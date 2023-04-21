@@ -3,7 +3,7 @@ package br.com.core.operations.application.usecase;
 import br.com.core.operations.application.mapper.QuotationMapper;
 import br.com.core.operations.core.entity.Quotation;
 import br.com.core.operations.core.entity.coinbase.response.CoinBaseResponse;
-import br.com.core.operations.core.entity.coinbase.response.CoinQuotationsResponse;
+import br.com.core.operations.core.entity.bitcoin.response.CoinQuotationsResponse;
 import br.com.core.operations.core.interfaces.gateway.BitCoinGateway;
 import br.com.core.operations.core.interfaces.usecase.FindBitCoinQuotationUseCase;
 import lombok.RequiredArgsConstructor;

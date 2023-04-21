@@ -1,7 +1,7 @@
 package br.com.core.operations.api.controllers;
 
 import br.com.core.operations.core.entity.Quotation;
-import br.com.core.operations.core.entity.coinbase.response.CoinQuotationsResponse;
+import br.com.core.operations.core.entity.bitcoin.response.CoinQuotationsResponse;
 import br.com.core.operations.core.interfaces.usecase.FindBitCoinQuotationUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

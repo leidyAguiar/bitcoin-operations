@@ -39,7 +39,7 @@ class BitCoinComponentSpec extends Specification {
                         .get("/bitcoin-operations/quotations"))
                 .andReturn()
 
-        then: "Devo receber status code igual a 200 OK"
+        then: "Deve retornar status code igual a 200 OK"
         mvcResult.getResponse().getStatus() == HttpStatus.OK.value()
     }
 }

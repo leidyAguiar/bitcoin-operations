@@ -2,7 +2,7 @@ package br.com.core.operations.application.mapper;
 
 import br.com.core.operations.core.entity.Quotation;
 import br.com.core.operations.core.entity.coinbase.response.CoinBaseResponse;
-import br.com.core.operations.core.entity.coinbase.response.CoinQuotationsResponse;
+import br.com.core.operations.core.entity.bitcoin.response.CoinQuotationsResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import java.util.Date;
