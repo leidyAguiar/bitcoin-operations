@@ -5,7 +5,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -24,15 +23,25 @@ class BitCoinComponentSpec extends Specification {
         var currency = "BRL"
 
         when: "Executo a chamada HTTP GET para a API de Cotações"
-        MvcResult response = mockMvc
+        MvcResult mvcResult = mockMvc
                 .perform(MockMvcRequestBuilders
                         .get("/bitcoin-operations/quotation/{currency}", currency))
                 .andReturn()
 
         then: "Devo receber status code igual a 200 OK"
-        response.getResponse().getStatus() == HttpStatus.OK.value()
+        mvcResult.getResponse().getStatus() == HttpStatus.OK.value()
     }
 
+    def "Deve retornar sucesso ao fazer uma requisição get a API"() {
+        when: "Invocar o endpoint"
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/bitcoin-operations/quotations"))
+                .andReturn()
+
+        then: "Devo receber status code igual a 200 OK"
+        mvcResult.getResponse().getStatus() == HttpStatus.OK.value()
+    }
 }
 
 
