@@ -23,7 +23,7 @@ class BitCoinOperationsControllerSpec extends Specification {
         given: "Dado um valor de bitcoin"
         String currency = "BRL"
         Quotation quotationResponse = QuotationFixture.getOneValidQuotation()
-        1 * findBitCoinQuotationUseCase.getQuotation(_ as String) >> quotationResponse
+        1 * findBitCoinQuotationUseCase.getQuotation(currency) >> quotationResponse
 
         when: "Invocar findBitCoinQuotation"
         def quotation = bitCoinOperationsController.findQuotation(currency)
@@ -34,17 +34,20 @@ class BitCoinOperationsControllerSpec extends Specification {
         quotation.currency == quotationResponse.currency
     }
 
-    def "O endpoint deve retornar uma lista de cotacões"() {
+    def "Deve validar o endpoint que retorna uma lista de bitcoin"() {
         given: "Dado uma lista de valores de bitcoin"
         CoinQuotationsResponse quotationsResponse = CoinQuotationsResponseFixture.getQuotationsValid()
         1 * findBitCoinQuotationUseCase.getQuotations() >> quotationsResponse
 
-        when: "Invocar findBitCoinQuotation"
-        def quotations = bitCoinOperationsController.findQuotations()
+        when: "Invocar o findQuotations"
+        def coinQuotationsResponse = bitCoinOperationsController.findQuotations()
 
         then: "Deve retornar uma lista de valores de bitcoin"
-        quotations.quotations.size() == 1
-        quotations.quotations[0].amount == quotationsResponse.quotations[0].amount
-        quotations.quotations[0].currency == quotationsResponse.quotations[0].currency
+        coinQuotationsResponse.quotations.size() == 1
+        verifyAll(coinQuotationsResponse.quotations[0]) {
+            amount == 145.62
+            currency == "BRL"
+        }
+        coinQuotationsResponse.date == "20-01-1996 01:00:00"
     }
 }

@@ -18,7 +18,7 @@ class BitCoinGatewayImplSpec extends Specification {
     def "Deve buscar uma cotação de bitcoin para diferentes moedas"() {
         given: "Uma cotação válida"
         CoinBaseResponse coinBaseResponse = CoinBaseResponseFixture.getOneValid(currency, expectedAmount)
-        1 * bitCointClient.getQuotation(_ as String) >> coinBaseResponse
+        1 * bitCointClient.getQuotation(currency) >> coinBaseResponse
 
         when: "Buscar uma cotação"
         def quotationResponse = bitCoinGateway.getQuotation(currency)
@@ -44,12 +44,13 @@ class BitCoinGatewayImplSpec extends Specification {
         String currency = "INVALID"
 
         and: "Uma chamada para a API que lança uma exceção"
-        1 * bitCointClient.getQuotation(_ as String) >> { {throw new Exception()}  }
+        1 * bitCointClient.getQuotation(currency) >> { {throw new RuntimeException("Moeda inválida: " + currency)}  }
 
         when: "Buscar uma cotação"
         bitCoinGateway.getQuotation(currency)
 
-        then: "Deve lançar uma RuntimeException"
-        thrown(RuntimeException)
+        then: "Deve lançar uma RuntimeException com a mensagem de erro esperada"
+        def ex = thrown(RuntimeException)
+        ex.message == "Erro genérico ao gerar um token GACB"
     }
 }
