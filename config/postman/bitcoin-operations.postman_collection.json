@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "91ce1719-ae35-48c1-9afc-7f3b0bb1e104",
+		"name": "bitcoin-operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20014895"
+	},
+	"item": [
+		{
+			"name": "API CoinBase",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.coinbase.com/v2/prices/spot?currency=EUR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"coinbase",
+						"com"
+					],
+					"path": [
+						"v2",
+						"prices",
+						"spot"
+					],
+					"query": [
+						{
+							"key": "currency",
+							"value": "EUR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar lista de cotações do Bitcoin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bitcoin-operations/quotations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bitcoin-operations",
+						"quotations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar a cotação do Bitcoin para moeda informada",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bitcoin-operations/quotation/USD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bitcoin-operations",
+						"quotation",
+						"USD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar lista de cotações pelo wiremock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/bitcoin-operations/quotations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"bitcoin-operations",
+						"quotations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar a cotação do Bitcoin pelo wiremock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/bitcoin-operations/quotation/EUR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"bitcoin-operations",
+						"quotation",
+						"EUR"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

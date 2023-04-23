@@ -1,0 +1,17 @@
+{
+  "request": {
+    "urlPath": "/bitcoin-operations/quotation/error",
+    "method": "GET"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "jsonBody": {
+      "status": 404,
+      "message": "Not Found",
+      "path": "/bitcoin-operations/quotation/error"
+    }
+  }
+}
